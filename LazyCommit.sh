@@ -13,12 +13,11 @@ main () {
     fi
 
     if [[ -n "$1" ]]; then
-        if [[ "$1" != "-a"]]; then
+        if [[ "$1" != "-a" ]]; then
             echo "BAD ARGUMENT OPERATION ABORTED"
             exit 1
         else
-            if [[ $STATUSREPO == *"Changes to be committed"* ]]; then
-            else
+            if [[ ! $STATUSREPO == *"Changes to be committed"* ]]; then
                 echo "You didn't add file to commit, aborting operation"
                 exit 1
             fi
