@@ -53,9 +53,9 @@ main () {
                 while true; do
                     read -p "" yn
                     case $yn in
-                        [1]* ) let "$MAJOR+1";break;;
-                        [2]* ) let "$MINOR+1";break;;
-                        [3]* ) let "$FIX+1";break;;
+                        [1]* ) MAJOR=$(($MAJOR+1));MINOR=0;break;;
+                        [2]* ) MINOR=$(($MINOR+1));break;;
+                        [3]* ) FIX=$(($FIX+1));break;;
                         * ) [1-3];;
                     esac
                 done
