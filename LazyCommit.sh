@@ -42,9 +42,9 @@ main () {
                     esac
                 done
             fi
-            MAJOR=$(sed '1!d' .changelog/version | grep -E -o "[0-9]+")
-            MINOR=$(sed '2!d' .changelog/version | grep -E -o "[0-9]+")
-            FIX=$(sed '3!d' .changelog/version | grep -E -o "[0-9]+")
+            MAJOR=$(sed '1!d' .changelog/version)
+            MINOR=$(sed '2!d' .changelog/version)
+            FIX=$(sed '3!d' .changelog/version)
             # MINOR=$(($MINOR+0))
             if [ $MAJOR -eq 0 ] && [ $MINOR -eq 0 ] && [ $FIX -eq 0 ]; then
                 MINOR=$(($MINOR+1))
@@ -53,7 +53,7 @@ main () {
                 while true; do
                     read -p "" yn
                     case $yn in
-                        [1]* ) MAJOR=$(($MAJOR+1));MINOR=0;break;;
+                        [1]* ) MAJOR=$(($MAJOR+1));MINOR=0;FIX=0;break;;
                         [2]* ) MINOR=$(($MINOR+1));break;;
                         [3]* ) FIX=$(($FIX+1));break;;
                         * ) [1-3];;
