@@ -42,9 +42,9 @@ main () {
                     esac
                 done
             fi
-            MAJOR=$(sed '1!d' .changelog/version)
-            MINOR=$(sed '2!d' .changelog/version)
-            FIX=$(sed '3!d' .changelog/version)
+            MAJOR=$(sed '1!d' .changelog/version | grep -E -o "[0-9]+")
+            MINOR=$(sed '2!d' .changelog/version | grep -E -o "[0-9]+")
+            FIX=$(sed '3!d' .changelog/version | grep -E -o "[0-9]+")
             if [ $MAJOR -eq 0 ] && [ $MINOR -eq 0 ] && [ $FIX -eq 0 ]; then
                 let "$MINOR+1"
             else
