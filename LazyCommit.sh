@@ -45,8 +45,9 @@ main () {
             MAJOR=$(sed '1!d' .changelog/version | grep -E -o "[0-9]+")
             MINOR=$(sed '2!d' .changelog/version | grep -E -o "[0-9]+")
             FIX=$(sed '3!d' .changelog/version | grep -E -o "[0-9]+")
+            # MINOR=$(($MINOR+0))
             if [ $MAJOR -eq 0 ] && [ $MINOR -eq 0 ] && [ $FIX -eq 0 ]; then
-                $MINOR=$(($MINOR+1))
+                MINOR=$(($MINOR+1))
             else
                 printf "What type of version is this commit ? [1-3]\n 1 - Major\n 2 - Minor\n 3 - Fix\n"
                 while true; do
